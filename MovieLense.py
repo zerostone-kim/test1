@@ -1,3 +1,6 @@
+# https://github.com/zerostone-kim/test1/blob/master/MovieLense.ipynb
+# 위 link 로 들어가서 "open in colab" 클릭하시면 작업 수행 확인 가능합니다.
+
 import pandas as pd
 
 movies = pd.read_csv('test1/ml-latest-small/movies.csv')
