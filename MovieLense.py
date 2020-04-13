@@ -38,3 +38,13 @@ min_movie_list = pd.merge(min_movie_df, movies, left_index = True, right_on = 'm
 
 print('3. 최고평점 : '+','.join(max_movie_list.title))
 print('4. 최저평점 : '+','.join(min_movie_list.title))
+
+
+# OR / AND 조건은 |, &  로 처리함
+movies_df_sel = movies[movies["genres"].str.contains("Crime") | movies["genres"].str.contains("Thriiler")]
+# print(movies_df_sel[['title','genres']])
+
+movies_df_sel_max = pd.merge(movies_df_sel, ratings.groupby("movieId").mean(), left_on = "movieId", right_index=True, how="left")
+movies_df_sel_max2 = movies_df_sel_max[movies_df_sel_max['rating'] == movies_df_sel_max['rating'].max()]
+
+print('3. 범죄스릴러 장르 최고평점 : '+','.join(movies_df_sel_max2['title']))
